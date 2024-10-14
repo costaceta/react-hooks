@@ -6,7 +6,7 @@ const initialState = {
 
 const reducer = (
   state: { count: number },
-  action: { type: string; payload: number }
+  action: { type: string; payload?: number }
 ) => {
   switch (action.type) {
     case "INCREMENT":
@@ -16,7 +16,7 @@ const reducer = (
     case "RESET":
       return { count: 0 };
     case "INCREMENT10":
-      return { count: state.count + action.payload };
+      return { count: state.count + (action.payload ?? 0) };
     default:
       return state;
   }
