@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { TaskAction, Task as TaskType } from "../../../store/reducers";
 
-const Task = ({
-  task,
-  onRemoveTask,
-  onChangeTask,
-  dispatch,
-}: {
+interface TaskProps {
   task: TaskType;
   onRemoveTask: (dispatch: React.Dispatch<TaskAction>, id: number) => void;
   onChangeTask: (dispatch: React.Dispatch<TaskAction>, task: TaskType) => void;
   dispatch: React.Dispatch<TaskAction>;
-}) => {
+}
+
+const Task = ({ task, onRemoveTask, onChangeTask, dispatch }: TaskProps) => {
   const [isEditing, setIsEditing] = useState(false);
   let taskContent;
 

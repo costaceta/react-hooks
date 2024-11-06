@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { TaskAction } from "../../../store/reducers";
 
-const AddTask = ({
-  onAddTask,
-  dispatch,
-}: {
+interface AddTaskProps {
   onAddTask: (dispatch: React.Dispatch<TaskAction>, text: string) => void;
   dispatch: React.Dispatch<TaskAction>;
-}) => {
+}
+
+const AddTask = ({ onAddTask, dispatch }: AddTaskProps) => {
   const [text, setText] = useState<string>("");
   return (
     <div className="flex gap-2 justify-center mb-4">

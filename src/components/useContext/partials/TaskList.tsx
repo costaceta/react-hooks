@@ -1,17 +1,19 @@
 import { TaskAction, Task as TaskType } from "../../../store/reducers";
 import Task from "./Task";
 
+interface TaskListProps {
+  tasks: TaskType[];
+  onRemoveTask: (dispatch: React.Dispatch<TaskAction>, id: number) => void;
+  onChangeTask: (dispatch: React.Dispatch<TaskAction>, task: TaskType) => void;
+  dispatch: React.Dispatch<TaskAction>;
+}
+
 const TaskList = ({
   tasks,
   onRemoveTask,
   onChangeTask,
   dispatch,
-}: {
-  tasks: TaskType[];
-  onRemoveTask: (dispatch: React.Dispatch<TaskAction>, id: number) => void;
-  onChangeTask: (dispatch: React.Dispatch<TaskAction>, task: TaskType) => void;
-  dispatch: React.Dispatch<TaskAction>;
-}) => {
+}: TaskListProps) => {
   return (
     <div>
       <ul className="border border-gray-500 rounded-md px-2 py-0">
