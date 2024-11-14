@@ -1,4 +1,13 @@
-import { increment, decrement, reset, increment10 } from './counter';
+import { increment, decrement, reset, increment10 } from "./counter";
 
-export { increment, decrement, reset, increment10 };
+import { addTask, editTask, removeTask } from "./tasks";
 
+export {
+  increment,
+  decrement,
+  reset,
+  increment10,
+  addTask,
+  editTask,
+  removeTask,
+};

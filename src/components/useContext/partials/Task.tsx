@@ -1,8 +1,13 @@
+import { Task as TaskType } from "../../../store";
 
-function Task() {
+interface TaskProps {
+  task: TaskType;
+}
+
+function Task({ task }: TaskProps) {
   return (
     <>
-      Imprimir relatório
+      {task.text}
       <div className="flex gap-2">
         <button className="rounded-full bg-green-500 px-5 py-2 text-white">
           Editar
