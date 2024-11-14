@@ -3,7 +3,9 @@ import { TasksAction } from "../reducers";
 
 let nextID = 3;
 export function addTask(dispatch: React.Dispatch<TasksAction>, text: string) {
-  dispatch({ type: "ADD", payload: { id: nextID++, text } });
+  nextID++;
+
+  dispatch({ type: "ADD", payload: { id: nextID, text } });
 }
 
 export function editTask(dispatch: React.Dispatch<TasksAction>, task: Task) {
