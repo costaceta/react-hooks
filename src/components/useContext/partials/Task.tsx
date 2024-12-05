@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Task as TaskType } from "../../../store";
-import { TasksAction } from "../../../store/reducers";
+import { editTask, removeTask } from "../../../store/actions";
+import { TasksDispatchContext } from "../../../contexts/TasksContext";
 
 interface TaskProps {
   task: TaskType;
-  onEditTask: (dispatch: React.Dispatch<TasksAction>, task: TaskType) => void;
-  onRemoveTask: (dispatch: React.Dispatch<TasksAction>, id: number) => void;
-  dispatch: React.Dispatch<TasksAction>;
 }
 
-function Task({ task, onEditTask, onRemoveTask, dispatch }: TaskProps) {
+function Task({ task }: TaskProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const dispatch = useContext(TasksDispatchContext);
 
   let taskContent;
 
@@ -22,7 +21,7 @@ function Task({ task, onEditTask, onRemoveTask, dispatch }: TaskProps) {
           type="text"
           value={task.text}
           onChange={(event) =>
-            onEditTask(dispatch, {
+            editTask(dispatch, {
               ...task,
               text: event.target.value,
             })
@@ -55,7 +54,7 @@ function Task({ task, onEditTask, onRemoveTask, dispatch }: TaskProps) {
       <div className="w-full flex gap-2">
         {taskContent}
         <button
-          onClick={() => onRemoveTask(dispatch, task.id)}
+          onClick={() => removeTask(dispatch, task.id)}
           className="rounded-full bg-red-500 px-5 py-2 text-white"
         >
           Remover

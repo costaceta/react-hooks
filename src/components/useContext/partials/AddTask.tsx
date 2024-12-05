@@ -1,13 +1,10 @@
-import { useState } from "react";
-import { TasksAction } from "../../../store/reducers";
+import { useContext, useState } from "react";
+import { addTask } from "../../../store/actions";
+import { TasksDispatchContext } from "../../../contexts/TasksContext";
 
-interface AddTaskProps {
-  onAddTask: (dispatch: React.Dispatch<TasksAction>, text: string) => void;
-  dispatch: React.Dispatch<TasksAction>;
-}
-
-function AddTask({ onAddTask, dispatch }: AddTaskProps) {
+function AddTask() {
   const [text, setText] = useState("");
+  const dispatch = useContext(TasksDispatchContext);
 
   return (
     <div className="flex gap-2 justify-center mb-4">
@@ -20,10 +17,10 @@ function AddTask({ onAddTask, dispatch }: AddTaskProps) {
       />
       <button
         onClick={() => {
-          if(!text) return
+          if (!text) return;
 
           setText("");
-          onAddTask(dispatch, text);
+          addTask(dispatch, text);
         }}
         className="rounded-full bg-blue-500 px-5 py-2 text-white"
       >

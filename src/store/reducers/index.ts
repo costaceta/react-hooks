@@ -1,3 +1,4 @@
+import { Reducer } from "react";
 import { Task } from "..";
 
 export type Action =
@@ -26,7 +27,7 @@ export type TasksAction =
   | { type: "EDIT"; payload: { task: Task } }
   | { type: "REMOVE"; payload: { id: number } };
 
-export const tasksReducer = (state: Task[], action: TasksAction) => {
+export const tasksReducer: Reducer<Task[], TasksAction> = (state: Task[], action: TasksAction) => {
   switch (action.type) {
     case "ADD":
       return [

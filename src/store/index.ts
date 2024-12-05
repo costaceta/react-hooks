@@ -1,4 +1,4 @@
-import { reducer } from "./reducers";
+import { reducer, tasksReducer } from "./reducers";
 
 const initialState = {
   count: 0,
@@ -7,7 +7,7 @@ const initialState = {
 export type Task = {
   id: number;
   text: string;
-  done: false;
+  done: boolean;
 };
 
 const initialTaskState: Task[] = [
@@ -28,4 +28,4 @@ const initialTaskState: Task[] = [
   },
 ];
 
-export { initialState, initialTaskState, reducer };
+export { initialState, initialTaskState, reducer, tasksReducer };
