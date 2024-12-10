@@ -7,7 +7,7 @@ const initialState = {
 export type Task = {
   id: number;
   text: string;
-  done: false;
+  done: boolean;
 };
 
 const initialTaskState: Task[] = [
