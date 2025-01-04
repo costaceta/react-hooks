@@ -8,7 +8,7 @@ function TaskList() {
   const isLastTask = tasks.length > 0 ? tasks[tasks.length - 1].id : 0;
 
   return (
-    <div>
+    <div data-testid="task-list">
       {tasks.length === 0 ? (
         <p className="border p-3">Nenhuma task encontrada!</p>
       ) : (
