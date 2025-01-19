@@ -8,7 +8,7 @@ function TaskList() {
   const isLastTask = tasks.length > 0 ? tasks[tasks.length - 1].id : 0;
 
   return (
-    <div>
+    <div data-testid="task-list">
       {tasks.length === 0 ? (
         <p className="border p-3">Nenhuma task encontrada!</p>
       ) : (
@@ -16,7 +16,9 @@ function TaskList() {
           {tasks.map((task: TaskType) => (
             <li
               key={task.id}
-              className={`flex items-center p-3 gap-2 justify-between border-b border-gray-500 ${isLastTask && "last:border-b-0"}`}
+              className={`flex items-center p-3 gap-2 justify-between border-b border-gray-500 ${
+                isLastTask && "last:border-b-0"
+              }`}
             >
               <Task task={task} />
             </li>

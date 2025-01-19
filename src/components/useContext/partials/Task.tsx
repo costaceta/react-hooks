@@ -9,7 +9,13 @@ interface TaskProps {
 
 function Task({ task }: TaskProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [editingText, setEditingText] = useState(task.text);
   const dispatch = useContext(TasksDispatchContext);
+
+  const handleStartEditing = () => {
+    setIsEditing(true);
+    setEditingText(task.text);
+  };
 
   let taskContent;
 
@@ -19,16 +25,17 @@ function Task({ task }: TaskProps) {
         <input
           className="flex-1 rounded-full border border-gray-500 px-5 py-2"
           type="text"
-          value={task.text}
-          onChange={(event) =>
-            editTask(dispatch, {
-              ...task,
-              text: event.target.value,
-            })
-          }
+          value={editingText}
+          onChange={(event) => setEditingText(event.target.value)}
         />
         <button
-          onClick={() => setIsEditing(!isEditing)}
+          onClick={() => {
+            editTask(dispatch, {
+              ...task,
+              text: editingText,
+            });
+            setIsEditing(false);
+          }}
           className="rounded-full bg-blue-500 px-5 py-2 text-white"
         >
           Salvar
@@ -40,7 +47,7 @@ function Task({ task }: TaskProps) {
       <>
         <div className="flex flex-1 items-center">{task.text}</div>
         <button
-          onClick={() => setIsEditing(!isEditing)}
+          onClick={handleStartEditing}
           className="rounded-full bg-green-500 px-5 py-2 text-white"
         >
           Editar
