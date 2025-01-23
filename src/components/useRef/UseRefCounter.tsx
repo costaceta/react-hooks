@@ -11,8 +11,8 @@ function UseRefCounter() {
 
   return (
     <div>
-      <h2>Contador sem Re-renderização</h2>
-      <p>O contador atual está armazenado em useRef.</p>
+      <h2 className="text-2xl bold mb-2">Contador sem Re-renderização</h2>
+      <p className="mb-2">O contador atual está armazenado em useRef.</p>
       <button className="bg-black text-white px-6 py-2 mb-3" onClick={increment}>
         Incrementar
       </button>
