@@ -1,14 +1,30 @@
+import { useRef } from "react";
 import "./App.css";
-import Form from "./components/useRef/Form";
-import UseRefCounter from "./components/useRef/UseRefCounter";
+import Modal from "./components/useImperativeHandle/Modal";
 
 function App() {
+  const dialog = useRef< { open: () => void } | null>(null);
+
+  const handleClick = () => {
+    if (dialog.current) {
+      dialog.current.open();
+    }
+  };
+
   return (
     <>
       <h1 className="text-blue-900 text-3xl">React hooks - aulas</h1>
-      <Form />
-      <hr className="my-10" />
-      <UseRefCounter />
+      <button className="bg-black text-white p-4 mt-2" onClick={handleClick}>Open Modal</button>
+
+      <Modal ref={dialog}>
+        <h1 className="text-3xl mb-4">Title Modal</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
+          exercitationem nulla eveniet, quia quas quo enim rerum quidem hic nisi
+          fugiat. Distinctio obcaecati possimus recusandae reprehenderit, aut
+          illum nemo officiis.
+        </p>
+      </Modal>
     </>
   );
 }
